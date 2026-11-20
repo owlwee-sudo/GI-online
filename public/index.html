@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GI Open House</title>
+  <meta name="description" content="GI Open House — event info, schedule, booth map and registration." />
+  <meta property="og:title" content="GI Open House" />
+  <meta property="og:description" content="Event info, schedule, booth map and registration." />
+  <meta name="theme-color" content="#0f1b3d" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f1b3d'/><text x='50' y='66' font-size='48' font-family='Arial' font-weight='700' text-anchor='middle' fill='%23ffc94d'>GI</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="nav" id="top">
+    <div class="wrap nav-inner">
+      <a href="#top" class="brand"><span class="brand-mark">GI</span><span data-i18n="brand">Open House</span></a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="#about" data-i18n="nav.about"></a>
+        <a href="#schedule" data-i18n="nav.schedule"></a>
+        <a href="#map" data-i18n="nav.map"></a>
+        <a href="#faq" data-i18n="nav.faq"></a>
+      </nav>
+      <div class="nav-actions">
+        <button class="lang" id="langBtn" type="button" aria-label="Switch language">EN</button>
+        <a href="#register" class="btn btn-sm" data-i18n="nav.register"></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <p class="eyebrow" data-i18n="hero.eyebrow"></p>
+        <h1 id="eventName"></h1>
+        <p class="tagline" id="eventTagline"></p>
+        <ul class="facts">
+          <li><span aria-hidden="true">📅</span><span id="eventDate"></span></li>
+          <li><span aria-hidden="true">⏰</span><span id="eventTime"></span></li>
+          <li><span aria-hidden="true">📍</span><a id="eventVenue" target="_blank" rel="noopener"></a></li>
+        </ul>
+        <div class="countdown" id="countdown" aria-live="polite"></div>
+        <div class="hero-cta">
+          <a href="#register" class="btn btn-lg" data-i18n="hero.cta"></a>
+          <a href="#map" class="btn btn-ghost btn-lg" data-i18n="hero.map"></a>
+        </div>
+      </div>
+      <div class="hero-shape" aria-hidden="true"></div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="wrap">
+        <h2 id="aboutTitle"></h2>
+        <p class="lead" id="aboutBody"></p>
+        <div class="cards" id="highlights"></div>
+        <div class="stats" id="stats"></div>
+      </div>
+    </section>
+
+    <section id="schedule" class="section alt">
+      <div class="wrap">
+        <h2 data-i18n="schedule.title"></h2>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+    </section>
+
+    <section id="map" class="section">
+      <div class="wrap">
+        <h2 data-i18n="map.title"></h2>
+        <p class="muted" data-i18n="map.hint"></p>
+        <div class="chips" id="mapFilters" role="group"></div>
+        <div class="map-layout">
+          <div class="map-box"><svg id="floorplan" viewBox="0 0 100 62" role="img"></svg></div>
+          <aside class="booth-panel" id="boothPanel" aria-live="polite"></aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="register" class="section alt">
+      <div class="wrap narrow">
+        <h2 data-i18n="reg.title"></h2>
+        <p class="muted" data-i18n="reg.sub"></p>
+
+        <form id="regForm" class="form" novalidate>
+          <div class="field">
+            <label for="f-name" data-i18n="reg.name"></label>
+            <input id="f-name" name="name" required maxlength="100" autocomplete="name" />
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="f-email" data-i18n="reg.email"></label>
+              <input id="f-email" name="email" type="email" required maxlength="120" autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="f-phone" data-i18n="reg.phone"></label>
+              <input id="f-phone" name="phone" type="tel" required maxlength="20" autocomplete="tel" inputmode="tel" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="f-role" data-i18n="reg.role"></label>
+              <select id="f-role" name="role" required>
+                <option value="" data-i18n="reg.choose"></option>
+                <option value="student" data-i18n="reg.role.student"></option>
+                <option value="parent" data-i18n="reg.role.parent"></option>
+                <option value="teacher" data-i18n="reg.role.teacher"></option>
+                <option value="other" data-i18n="reg.role.other"></option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-grade" data-i18n="reg.grade"></label>
+              <select id="f-grade" name="grade">
+                <option value="" data-i18n="reg.na"></option>
+                <option value="P6">ป.6 / Grade 6</option>
+                <option value="M1">ม.1 / Grade 7</option>
+                <option value="M2">ม.2 / Grade 8</option>
+                <option value="M3">ม.3 / Grade 9</option>
+                <option value="M4">ม.4 / Grade 10</option>
+                <option value="other" data-i18n="reg.role.other"></option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-school" data-i18n="reg.school"></label>
+            <input id="f-school" name="school" maxlength="120" />
+          </div>
+          <div class="row">
+            <div class="field">
+              <label data-i18n="reg.session"></label>
+              <div class="sessions" id="sessionOptions"></div>
+            </div>
+            <div class="field small">
+              <label for="f-guests" data-i18n="reg.guests"></label>
+              <input id="f-guests" name="guests" type="number" min="1" max="5" value="1" required inputmode="numeric" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-source" data-i18n="reg.source"></label>
+            <select id="f-source" name="source">
+              <option value="" data-i18n="reg.choose"></option>
+              <option value="instagram">Instagram</option>
+              <option value="facebook">Facebook</option>
+              <option value="friend" data-i18n="reg.src.friend"></option>
+              <option value="school" data-i18n="reg.src.school"></option>
+              <option value="other" data-i18n="reg.role.other"></option>
+            </select>
+          </div>
+          <!-- Honeypot: humans never see this; bots fill it in. -->
+          <div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+          <label class="check">
+            <input type="checkbox" name="consent" required />
+            <span data-i18n="reg.consent"></span>
+          </label>
+          <p class="form-error" id="formError" role="alert"></p>
+          <button class="btn btn-lg btn-block" type="submit" id="submitBtn" data-i18n="reg.submit"></button>
+        </form>
+
+        <div class="ticket" id="ticket" hidden>
+          <p class="ticket-ok" data-i18n="reg.done"></p>
+          <p class="muted" data-i18n="reg.showCode"></p>
+          <div class="ticket-code" id="ticketCode"></div>
+          <dl class="ticket-meta" id="ticketMeta"></dl>
+          <button class="btn btn-ghost" type="button" id="againBtn" data-i18n="reg.again"></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="wrap narrow">
+        <h2 data-i18n="faq.title"></h2>
+        <div class="faq" id="faqList"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <strong id="footName"></strong>
+        <p class="muted" id="footVenue"></p>
+      </div>
+      <div class="foot-links" id="footLinks"></div>
+    </div>
+  </footer>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
