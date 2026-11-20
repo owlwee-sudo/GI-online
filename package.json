@@ -1,0 +1,23 @@
+{
+  "name": "gi-online",
+  "version": "1.0.0",
+  "description": "GI Open House website (Cloudflare Workers + D1)",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:init": "wrangler d1 migrations apply gi-openhouse --remote"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/owlwee-sudo/gi-online.git"
+  },
+  "bugs": {
+    "url": "https://github.com/owlwee-sudo/gi-online/issues"
+  },
+  "homepage": "https://github.com/owlwee-sudo/gi-online#readme",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "wrangler": "^4.165.0"
+  }
+}
