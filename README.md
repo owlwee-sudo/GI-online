@@ -2,15 +2,15 @@
 
 Website for the **GI Open House**, live at **gi-spsm.com**.
 
-- Thai/English event page: info, countdown, about GI, schedule, booth map, FAQ
-- Registration form with seat limits per session; visitors get a 6-letter check-in code
+- **Visitor UI: not built yet.** It will be designed in Figma first. `public/index.html` is a placeholder.
+- Registration API with seat limits per session; visitors get a 6-letter check-in code
 - Staff page at `/admin` for check-in by code, a search table and CSV export
 
 Built on Cloudflare Workers (static assets) + D1 (database).
 
 ## Edit the content
 
-Almost everything visitors read lives in **`public/content.js`**: event date, about text, schedule, sessions and capacity, booth map and FAQ. Search for `TODO` and replace each placeholder. Colors are at the top of `public/styles.css`.
+Almost everything visitors read lives in **`public/content.js`**: event date, about text, schedule, sessions and capacity, booth map and FAQ. Search for `TODO` and replace each placeholder.
 
 The booth map uses a 100 × 60 grid. Each booth has `x, y` (top-left corner) and `w, h` (size).
 
@@ -18,10 +18,8 @@ The booth map uses a 100 × 60 grid. Each booth has `x, y` (top-left corner) and
 
 ```
 public/          static site (served as-is)
-  index.html     page structure
-  content.js     ALL editable content (also read by the server)
-  app.js         page logic: language, countdown, map, form
-  styles.css     design
+  index.html     placeholder until the Figma design is built
+  content.js     event data: sessions + capacity (read by the server), text, schedule, booths, FAQ
   admin.html     staff page
 src/index.js     Worker: /api/sessions, /api/register, /api/admin/*
 migrations/      D1 database schema
